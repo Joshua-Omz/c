@@ -2,13 +2,15 @@
 //Name:Omisanya joshua
 //MatricNo:IFT/23/4151
 
-#include<stdio.h>
+
 
 #include <stdio.h>
+#include<stdlib.h>
+
 
 int main()
 {
-    int arr[100];          // array (max 100 elements - enough for beginners)
+            // array (max 100 elements - enough for beginners)
     int n;                 // how many numbers the user will enter
     int i;
     int largest;
@@ -18,10 +20,21 @@ int main()
     printf("How many numbers? ");
     scanf("%d", &n);
 
+    // allocate memory 
+     int *arr =  (int*)malloc(n *sizeof(int)); 
+     if(arr == NULL){
+        printf("sowie memory allocation failed");
+        return 1;
+     }
+
+     // must set element of array to be more than  one 
     if (n < 2) {
         printf("Need at least 2 numbers to find second largest!\n");
+        free(arr);
         return 0;
     }
+
+    
 
     // 2. Read all the numbers
     printf("Enter %d numbers:\n", n);
@@ -53,6 +66,6 @@ int main()
         printf("Largest number     = %d\n", largest);
         printf("Second largest number = %d\n", second_largest);
     }
-
+free(arr);
     return 0;
 }
